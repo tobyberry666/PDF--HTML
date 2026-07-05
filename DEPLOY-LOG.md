@@ -17,7 +17,7 @@
 
 ## 时间线
 
-### 第一关：Git 初始化 + LFS 配置 ✅
+### 第一关：Git 初始化 + LFS 配置 
 
 ```
 git init → git lfs track "*.pdf" → git add -A → git commit
@@ -59,7 +59,7 @@ steps:
 
 **根因**：5 本 PDF 共 160MB，超过了 `deploy-pages` Action 的承载能力。
 
-#### 尝试 3：PDF 放 GitHub Releases，网站放 Pages ❌
+#### 尝试 3：PDF 放 GitHub Releases，网站放 Pages 
 
 - 创建 Release v0.1.0，上传 5 本 PDF
 - `books.json` 中 `file` 指向 Release 直链
