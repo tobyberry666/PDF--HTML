@@ -24,21 +24,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          lfs: true
 
-      - name: Verify LFS files are real PDFs
-        run: |
-          for f in *.pdf; do
-            if [ -f "$f" ]; then
-              HEADER=$(head -c 5 "$f")
-              if [ "$HEADER" != "%PDF-" ]; then
-                echo "ERROR: $f is not a real PDF (header: $HEADER)"
-                exit 1
-              fi
-              echo "OK: $f ($(du -h "$f" | cut -f1))"
-            fi
-          done
+      - name: Remove PDFs (served via GitHub Releases)
+        run: rm -f *.pdf
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
