@@ -68,16 +68,17 @@
    });
    actions.appendChild(pdfBtn);
 
-   if (book.converted) {
-     const htmlBtn = document.createElement('button');
-     htmlBtn.className = 'btn-html';
-     htmlBtn.textContent = 'HTML 版';
-     htmlBtn.addEventListener('click', (e) => {
-       e.stopPropagation();
-       window.location.href = book.converted;
-     });
-     actions.appendChild(htmlBtn);
-   }
+  // 仅 poster 提供在线 HTML 版；其余书为扫描版，本地转换后才可用，画廊不展示该按钮
+  if (book.converted && book.id === 'poster') {
+    const htmlBtn = document.createElement('button');
+    htmlBtn.className = 'btn-html';
+    htmlBtn.textContent = 'HTML 版';
+    htmlBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      window.location.href = book.converted;
+    });
+    actions.appendChild(htmlBtn);
+  }
 
    card.appendChild(actions);
  
